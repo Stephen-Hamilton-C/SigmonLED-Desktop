@@ -1,6 +1,7 @@
 #ifndef PALETTEMODE_H
 #define PALETTEMODE_H
 
+#include <stdint.h>
 
 class PaletteMode
 {
@@ -12,7 +13,7 @@ public:
     char value();
 
 private:
-    PaletteMode(char value);
+    PaletteMode(uint8_t value);
 
     char _value;
 };
