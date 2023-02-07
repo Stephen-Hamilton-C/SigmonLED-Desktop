@@ -77,10 +77,9 @@ void DeviceManager::stopScan()
 
 void DeviceManager::deviceDiscovered(const QBluetoothDeviceInfo& deviceInfo)
 {
-    qDebug() << "Discovered device: " << deviceInfo.name();
     if(deviceInfo.coreConfigurations() & QBluetoothDeviceInfo::LowEnergyCoreConfiguration
             && deviceInfo.serviceUuids().contains(desiredServiceUUID)) {
-        qDebug() << "Device is BLE and has the serial service";
+        qDebug() << "Found" << deviceInfo.name();
         _discoveredDevices.append(new QBluetoothDeviceInfo(deviceInfo));
     }
 }
