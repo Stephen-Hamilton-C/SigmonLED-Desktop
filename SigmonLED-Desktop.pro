@@ -9,13 +9,21 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    src/arduinocommander.cpp \
+    src/defaultpalette.cpp \
     src/devicemanager.cpp \
     src/main.cpp \
-    src/mainwindow.cpp
+    src/mainwindow.cpp \
+    src/palette.cpp \
+    src/palettemode.cpp
 
 HEADERS += \
+    src/arduinocommander.h \
+    src/defaultpalette.h \
     src/devicemanager.h \
-    src/mainwindow.h
+    src/mainwindow.h \
+    src/palette.h \
+    src/palettemode.h
 
 FORMS += \
     src/mainwindow.ui

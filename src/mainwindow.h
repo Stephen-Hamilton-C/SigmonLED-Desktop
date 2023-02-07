@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "devicemanager.h"
+#include "arduinocommander.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -23,6 +23,6 @@ private slots:
 
 private:
   Ui::MainWindow *ui;
-  DeviceManager* _deviceManager;
+  ArduinoCommander _commander;
 };
 #endif // MAINWINDOW_H

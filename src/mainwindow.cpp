@@ -6,8 +6,6 @@ MainWindow::MainWindow(QWidget *parent)
   , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-    _deviceManager = new DeviceManager(this);
 }
 
 MainWindow::~MainWindow()
@@ -17,12 +15,12 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_startScanButton_clicked()
 {
-    _deviceManager->startScan();
+    _commander.deviceManager.startScan();
 }
 
 
 void MainWindow::on_stopScanButton_clicked()
 {
-    _deviceManager->stopScan();
+    _commander.deviceManager.stopScan();
 }
 

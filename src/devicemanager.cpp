@@ -5,12 +5,20 @@ DeviceManager::DeviceManager(QObject *parent)
   : QObject{parent}
 {
      _scanner = new QBluetoothDeviceDiscoveryAgent(this);
-     _scanner->setLowEnergyDiscoveryTimeout(15000);
+     _scanner->setLowEnergyDiscoveryTimeout(10000);
 
      connect(_scanner, &QBluetoothDeviceDiscoveryAgent::deviceDiscovered, this, &DeviceManager::deviceDiscovered);
      connect(_scanner, &QBluetoothDeviceDiscoveryAgent::errorOccurred, this, &DeviceManager::scanError);
      connect(_scanner, &QBluetoothDeviceDiscoveryAgent::finished, this, &DeviceManager::scanStopped);
      connect(_scanner, &QBluetoothDeviceDiscoveryAgent::canceled, this, &DeviceManager::scanStopped);
+}
+
+DeviceManager::~DeviceManager()
+{
+    delete _currentDevice;
+    delete _deviceController;
+    delete _deviceService;
+    delete _deviceCharacteristic;
 }
 
 QList<QBluetoothDeviceInfo*> DeviceManager::getDiscoveredDevices()
@@ -20,7 +28,7 @@ QList<QBluetoothDeviceInfo*> DeviceManager::getDiscoveredDevices()
 
 void DeviceManager::connectDevice(QBluetoothDeviceInfo* device)
 {
-    qDebug() << "First disconnect from current device...";
+    qDebug() << "First, disconnect from current device...";
     disconnectDevice();
 
     qDebug() << "Connecting...";

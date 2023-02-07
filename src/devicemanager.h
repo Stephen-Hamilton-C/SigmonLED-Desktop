@@ -9,6 +9,7 @@ class DeviceManager : public QObject
     Q_OBJECT
 public:
     explicit DeviceManager(QObject *parent = nullptr);
+    ~DeviceManager();
 
     QList<QBluetoothDeviceInfo*> getDiscoveredDevices();
     void connectDevice(QBluetoothDeviceInfo* device);
